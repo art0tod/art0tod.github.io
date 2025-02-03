@@ -1,0 +1,22 @@
+.root {
+  padding: var(--m-xl);
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--gray10);
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+}
+
+.link {
+  padding: var(--m-xs);
+  translate: 0 calc(-1 * var(--m-xs));
+  color: white;
+}

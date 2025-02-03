@@ -1,0 +1,15 @@
+:root {
+  --gray10: hsl(0, 0%, 10%);
+  --gray30: hsl(0, 0%, 30%);
+  --gray50: hsl(0, 0%, 50%);
+  --gray70: hsl(0, 0%, 70%);
+  --gray90: hsl(0, 0%, 90%);
+
+  --m-xxs: .25rem;
+  --m-xs: .5rem;
+  --m-s: .75rem;
+  --m-m: 1rem;
+  --m-l: 1.25rem;
+  --m-xl: 1.75rem;
+  --m-xxl: 2.5rem;
+}

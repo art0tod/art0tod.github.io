@@ -1,0 +1,39 @@
+.repos_list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  background-color: var(--gray10);
+}
+
+.repos_item {
+  display: flex;
+  width: 100%;
+}
+
+.repos_item_link {
+  padding: var(--m-s);
+  width: 75%;
+}
+
+.repos_item_link:hover .repo_name {
+  text-decoration: underline;
+}
+
+.repos_item_link:active {
+  background-color: var(--gray30);
+}
+
+.repo_name {
+  font-size: 1.5rem;
+  margin-block: var(--m-s);
+  padding: 0;
+}
+
+.paragraph {
+  margin-block: var(--m-xs);
+}
+
+.desc {
+  font-style: italic;
+}

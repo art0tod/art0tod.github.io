@@ -1,9 +1,12 @@
-import "./App.css";
+import style from "./App.module.css";
+import { Footer } from "./components/Footer/Footer";
+import { Main } from "./pages/main/Main";
 
 function App() {
   return (
-    <div>
-      <h1>Hello, world!</h1>
+    <div className={style.page}>
+      <Main />
+      <Footer />
     </div>
   );
 }
