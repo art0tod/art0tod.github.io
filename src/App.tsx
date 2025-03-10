@@ -1,6 +1,6 @@
-import style from "./App.module.css";
-import { Footer } from "./components/Footer/Footer";
-import { Main } from "./pages/main/Main";
+import style from './App.module.css';
+import { Footer } from './components/Footer/Footer';
+import { Main } from './pages/main/';
 
 function App() {
   return (

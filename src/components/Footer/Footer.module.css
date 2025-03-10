@@ -1,8 +1,9 @@
 .root {
-  padding: var(--m-xl);
+  padding: calc(var(--m-xxl) * 2) var(--m-xl);
   display: flex;
   justify-content: space-around;
-  background-color: var(--gray10);
+  margin-top: auto;
+  border-top: 1px solid var(--gray50);
 }
 
 .link:hover {
@@ -16,7 +17,7 @@
 }
 
 .link {
-  padding: var(--m-xs);
-  translate: 0 calc(-1 * var(--m-xs));
+  padding: var(--m-m) var(--m-xs);
+  translate: 0 calc(-1 * var(--m-m));
   color: white;
 }

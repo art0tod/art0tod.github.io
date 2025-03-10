@@ -8,7 +8,7 @@ export function Main() {
     <div className={style.root}>
       <ProfileCard />
       <ProjectsList />
-      <SEO name="Artyom Todor's Site" title="Artyom Todor's Site" description="Artyom Todor's Site" type="site" themeColor="#000"></SEO>
+      <SEO name="Artem Todor's Site" title="Artem Todor's Site" description="Artem Todor's Site" type="site" themeColor="#000"></SEO>
     </div>
   )
 }

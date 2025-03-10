@@ -1,9 +1,7 @@
-.repos_list {
+/* .repos_list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  padding: 0;
-  background-color: var(--gray10);
 }
 
 .repos_item {
@@ -36,4 +34,44 @@
 
 .desc {
   font-style: italic;
+} */
+
+.repos_list {
+  list-style: none;
+  display: flex;
+  overflow-x: auto;
+  gap: 2rem;
+  padding: var(--m-xxl);
+
+  /* Custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--gray30) var(--gray10);
+}
+
+.repos_item {
+  flex: 0 0 auto; /* Prevent flex items from overflowing */
+  width: 25rem;
+
+  background-color: var(--gray10);
+
+  border-radius: 3rem;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.desc {
+  font-style: italic;
+}
+
+.repo_image {
+  width: 100%;
+  object-fit: contain;
+  margin: 0;
+  padding: 0;
+}
+
+.repo_info {
+  padding: var(--m-xl);
 }
