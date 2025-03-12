@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { TGithubRepos } from '../../utils/types';
 import { getGitHubPinnedRepos } from '../../utils/api';
 import style from './ProjectsList.module.css';
 import { Link } from 'react-router-dom';
 import { formatDate } from '../../utils/utils';
-import { githubProjectsMocks } from '../../mocks/githubProjectsMocks';
+// import { githubProjectsMocks } from '../../mocks/githubProjectsMocks';
 
 export const ProjectsList: React.FC = () => {
   const [repos, setRepos] = useState<TGithubRepos | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const listRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     getGitHubPinnedRepos()
@@ -29,11 +30,30 @@ export const ProjectsList: React.FC = () => {
       });
   }, []);
 
-  // TODO: remove this mock after testing
+  useEffect(() => {
+    const handleWheel = (evt: WheelEvent) => {
+      evt.preventDefault();
+      if (listRef.current) {
+        listRef.current.scrollLeft += evt.deltaY;
+      }
+    };
+
+    const listElement = listRef.current;
+    if (listElement) {
+      listElement.addEventListener('wheel', handleWheel, { passive: false });
+    }
+
+    return () => {
+      if (listElement) {
+        listElement.removeEventListener('wheel', handleWheel);
+      }
+    };
+  }, []);
+
+  // // TODO: remove this mock
   // useEffect(() => {
   //   setRepos(githubProjectsMocks as TGithubRepos);
   //   setLoading(false);
-  //   setError(null);
   // }, []);
 
   return (
@@ -46,7 +66,7 @@ export const ProjectsList: React.FC = () => {
       ) : !repos ? (
         <div>There is no data about repositories</div>
       ) : (
-        <ul className={style.repos_list}>
+        <ul ref={listRef} className={style.repos_list}>
           {repos.map((repo) => (
             <li key={repo.id} className={style.repos_item}>
               <Link
@@ -62,17 +82,37 @@ export const ProjectsList: React.FC = () => {
                 />
                 <div className={style.repo_info}>
                   <h3 className={style.repo_name}>{repo.name}</h3>
-                  <p className={style.paragraph}>
-                    Updated: {formatDate(repo.updated_at)}
+                  <p className={style.repo_info_line}>
+                    <span className={style.repo_info_line_label}>Updated:</span>
+                    <span>{formatDate(repo.updated_at)}</span>
                   </p>
-                  <p className={style.paragraph}>
-                    Creaded: {formatDate(repo.created_at)}
+                  <p className={style.repo_info_line}>
+                    <span className={style.repo_info_line_label}>Creaded:</span>
+                    <span>{formatDate(repo.created_at)}</span>
                   </p>
-                  <p className={style.paragraph + ' ' + style.desc}>
+                  <p className={style.line + ' ' + style.desc}>
                     {repo.description}
                   </p>
                 </div>
               </Link>
+              <div className={style.repo_links}>
+                <Link
+                  to={repo.html_url}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className={style.repo_link}
+                >
+                  GitHub
+                </Link>
+                <Link
+                  to={`https://art0tod.github.io/${repo.name}`}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className={style.repo_link}
+                >
+                  Site
+                </Link>
+              </div>
             </li>
           ))}
         </ul>

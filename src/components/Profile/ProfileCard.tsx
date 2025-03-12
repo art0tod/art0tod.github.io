@@ -3,34 +3,34 @@ import { TGitHubUser } from '../../utils/types';
 import { getGitHubProfile } from '../../utils/api';
 import style from './Profile.module.css';
 import { Link } from 'react-router-dom';
-import { githubProfileMocks } from '../../mocks/githubProfileMocks';
+// import { githubProfileMocks } from '../../mocks/githubProfileMocks';
 
 export const ProfileCard: React.FC = () => {
   const [user, setUser] = useState<TGitHubUser | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  // useEffect(() => {
-  //   getGitHubProfile()
-  //     .then((result) => {
-  //       setUser(result);
-  //       setLoading(false);
-  //     })
-  //     .catch((err) => {
-  //       setError('GitHub API error');
-  //       console.error(err.message);
-  //     })
-  //     .finally(() => {
-  //       setLoading(false);
-  //     });
-  // }, []);
+  useEffect(() => {
+    getGitHubProfile()
+      .then((result) => {
+        setUser(result);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError('GitHub API error');
+        console.error(err.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
 
   // TODO: remove this mock after testing
-  useEffect(() => {
-    setUser(githubProfileMocks as TGitHubUser);
-    setLoading(false);
-    setError(null);
-  }, []);
+  // useEffect(() => {
+  //   setUser(githubProfileMocks as TGitHubUser);
+  //   setLoading(false);
+  //   setError(null);
+  // }, []);
 
   return (
     <div className={style.root}>
