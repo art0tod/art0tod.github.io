@@ -11,11 +11,14 @@ export const ProjectCard = ({ repo }: { repo: TGitHubRepo }) => (
       rel='noopener noreferrer'
       className={style.repos_item_link}
     >
-      <img
-        src={`https://raw.githubusercontent.com/art0tod/${repo.name}/refs/heads/main/preview.png`}
-        alt={repo.name}
-        className={style.repo_image}
-      />
+      <div className={style.repo_image_wrapper}>
+        <img
+          src={`https://raw.githubusercontent.com/art0tod/${repo.name}/refs/heads/main/preview.png`}
+          alt={repo.name}
+          className={style.repo_image}
+          loading='lazy'
+        />
+      </div>
       <div className={style.repo_info}>
         <h3 className={style.repo_name}>{repo.name}</h3>
         <p className={style.repo_info_line}>
