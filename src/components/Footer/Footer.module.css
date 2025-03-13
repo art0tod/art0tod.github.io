@@ -21,3 +21,9 @@
   translate: 0 calc(-1 * var(--m-m));
   color: white;
 }
+
+@media (hover: none) {
+  .link:hover {
+    text-decoration: none;
+  }
+}
