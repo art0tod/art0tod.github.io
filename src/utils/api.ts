@@ -1,4 +1,4 @@
-import { TGitHubUser, TGithubRepos, TGithubRepoImage } from './types';
+import { TGitHubUser, TGithubRepos } from './types';
 
 const GITHUB_URL = 'https://api.github.com';
 const USERNAME = 'art0tod';
